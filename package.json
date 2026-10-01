@@ -1,0 +1,9 @@
+{
+  "name": "jiangangchongapp-tools",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Standalone HTML tools for 金刚宠 (Jingangchong Pet Grooming) staff. Brand v2 styled.",
+  "scripts": {
+    "build": "echo 'No build step — files served as-is by Cloudflare Pages' && exit 0"
+  }
+}
