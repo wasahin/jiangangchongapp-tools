@@ -7,14 +7,14 @@
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <style>
 /* ============================================
-   Brand v2 (2026-09-15) palette applied
-   Primary    Gold  #E2BC6E
-   Secondary  Navy  #1B3A5C
+   Brand v3 暖陶橙 (2026-11-02) palette
+   藏蓝 Navy   #1B3A5C   primary
+   金刚金 Gold #E2BC6E   secondary
+   奶油白 Cream #FAF6EE canvas
+   Surface    #FFFFFF   cards
+   Hairline   #E6DCCB   the only elevation (flat - no shadows)
    Success    Green #22C55E
    Warning    Orng  #F59E0B
-   Bg page    Cream #FAF6EE
-   Bg section Sand  #F0E8D6
-   Bg hero    Honey #F5E6C8
    ============================================ */
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Microsoft YaHei',sans-serif; background:#FAF6EE; padding:24px; color:#1B3A5C; }
@@ -23,26 +23,26 @@ h1 { grid-column:1/-1; font-size:22px; color:#1B3A5C; margin-bottom:4px; }
 .sub { grid-column:1/-1; font-size:13px; color:#5A6F84; margin-bottom:12px; }
 
 /* 表单区 */
-.form-panel { background:#fff; border-radius:14px; padding:22px; box-shadow:0 4px 16px rgba(27,58,92,.08); }
+.form-panel { background:#fff; border:1px solid #E6DCCB; border-radius:14px; padding:22px; }
 .form-panel h2 { font-size:15px; color:#1B3A5C; margin:18px 0 10px; border-left:4px solid #E2BC6E; padding-left:8px; }
 .form-panel h2:first-child { margin-top:0; }
 .row { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px; }
 .field { display:flex; flex-direction:column; gap:4px; }
 .field.full { grid-column:1/-1; }
 label { font-size:12px; color:#5A6F84; font-weight:bold; }
-input,select,textarea { padding:8px 10px; border:1px solid #F0E8D6; border-radius:8px; font-size:13px; font-family:inherit; background:#FAF6EE; }
+input,select,textarea { padding:8px 10px; border:1px solid #E6DCCB; border-radius:8px; font-size:13px; font-family:inherit; background:#FAF6EE; }
 input:focus,select:focus,textarea:focus { outline:none; border-color:#E2BC6E; background:#fff; }
 textarea { resize:vertical; min-height:52px; }
-.btn { margin-top:16px; width:100%; padding:13px; background:#E2BC6E; color:#fff; border:none; border-radius:10px; font-size:15px; font-weight:bold; cursor:pointer; font-family:inherit; }
-.btn:hover { background:#C99A45; }
-.btn.gray { background:#1B3A5C; margin-top:8px; }
-.btn.gray:hover { background:#0F2A45; }
+.btn { margin-top:16px; width:100%; padding:13px; background:#1B3A5C; color:#FAF6EE; border:none; border-radius:10px; font-size:15px; font-weight:bold; cursor:pointer; font-family:inherit; }
+.btn:hover { background:#0F2A45; }
+.btn.gray { background:#E2BC6E; color:#1B3A5C; margin-top:8px; }
+.btn.gray:hover { background:#C99A45; }
 .tip { font-size:12px; color:#5A6F84; margin-top:10px; line-height:1.7; background:#FAF6EE; padding:10px 12px; border-radius:8px; }
 
 /* 卡片预览区 */
 .preview-wrap { position:sticky; top:20px; }
-.card { width:400px; background:#FAF6EE; border-radius:20px; overflow:hidden; box-shadow:0 8px 28px rgba(27,58,92,.18); }
-.card-head { background:#F5E6C8; color:#1B3A5C; padding:20px 22px 16px; border:2px solid #E2BC6E; border-radius:18px; }
+.card { width:400px; background:#FAF6EE; border:1px solid #E6DCCB; border-radius:20px; overflow:hidden; }
+.card-head { background:#FFFFFF; color:#1B3A5C; padding:20px 22px 16px; border:2px solid #E2BC6E; border-radius:18px; }
 .head-row { display:flex; align-items:center; gap:12px; }
 .logo { width:46px; height:46px; border-radius:10px; object-fit:cover; background:#fff; padding:2px; flex-shrink:0; }
 .logo-foot { width:28px; height:28px; border-radius:6px; object-fit:cover; vertical-align:middle; margin-right:6px; }
@@ -52,22 +52,22 @@ textarea { resize:vertical; min-height:52px; }
 .card-body { padding:18px 20px 20px; }
 .pet-basic { display:flex; justify-content:space-between; align-items:center; background:#fff; border-radius:12px; padding:12px 16px; margin-bottom:14px; }
 .pet-basic .name { font-size:19px; font-weight:bold; color:#1B3A5C; }
-.pet-basic .times { font-size:11px; background:#F5E6C8; color:#1B3A5C; padding:3px 10px; border-radius:20px; font-weight:bold; }
+.pet-basic .times { font-size:11px; background:#FAF6EE; color:#1B3A5C; padding:3px 10px; border-radius:20px; font-weight:bold; }
 .sec-title { font-size:13px; font-weight:bold; color:#1B3A5C; margin:14px 0 8px; }
 .measure-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
 .m-item { background:#fff; border-radius:10px; padding:10px 6px; text-align:center; }
 .m-item .m-label { font-size:11px; color:#5A6F84; }
 .m-item .m-val { font-size:16px; font-weight:bold; color:#1B3A5C; margin:3px 0; }
 .m-item .m-delta { font-size:10px; font-weight:bold; }
-.up { color:#F59E0B; } .down { color:#22C55E; } .flat { color:#999; }
+.up { color:#F59E0B; } .down { color:#22C55E; } .flat { color:#5A6F84; }
 .check-list { background:#fff; border-radius:12px; padding:6px 14px; }
-.check-row { display:flex; justify-content:space-between; padding:9px 0; font-size:13px; border-bottom:1px dashed #F0E8D6; }
+.check-row { display:flex; justify-content:space-between; padding:9px 0; font-size:13px; border-bottom:1px dashed #E6DCCB; }
 .check-row:last-child { border-bottom:none; }
 .check-row .c-name { color:#1B3A5C; font-weight:bold; }
 .check-row .c-status { color:#5A6F84; }
 .badge-good { color:#22C55E; font-weight:bold; }
 .badge-warn { color:#F59E0B; font-weight:bold; }
-.note-box { background:#F5E6C8; border-radius:12px; padding:12px 14px; margin-top:12px; }
+.note-box { background:#FAF6EE; border-radius:12px; padding:12px 14px; margin-top:12px; }
 .note-box .n-label { font-size:11px; color:#1B3A5C; font-weight:bold; margin-bottom:4px; }
 .note-box .n-text { font-size:12.5px; color:#1B3A5C; line-height:1.6; }
 .next-box { display:flex; justify-content:space-between; align-items:center; background:#1B3A5C; color:#E2BC6E; border-radius:12px; padding:12px 16px; margin-top:12px; font-size:13px; }
